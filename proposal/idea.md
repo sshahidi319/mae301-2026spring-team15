@@ -42,4 +42,4 @@ To keep the MVP feasible, we may support only a limited set of receipt formats a
 We plan to use public recipe datasets from sources such as Kaggle or Hugging Face for ingredient lists and meal examples, and a nutrition source such as USDA FoodData Central for calories and macro information. We also expect to create synthetic pantry examples and sample labeled receipts to test receipt parsing and inventory updates. Because no single dataset is likely to match our exact use case, we will combine public data with small team-created examples and document any preprocessing or assumptions.
 
 ## Video Pitch Link
-- [Insert YouTube link here]
+- https://www.youtube.com/watch?v=YrkjZOepj7E
