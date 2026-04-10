@@ -1,1 +1,50 @@
+[TITLE]: Simple Scrambled Eggs
+[INGREDIENTS]:
+- 2 large eggs
+- 1 tbsp butter
+- 1 pinch salt
+- 1 pinch black pepper
+[DIRECTIONS]:
+1. Crack the eggs into a bowl and whisk until combined.
+2. Melt the butter in a small skillet over medium-low heat.
+3. Pour in the eggs and let them sit for 20 seconds.
+4. Gently stir with a spatula until soft curds form.
+5. Season with salt and pepper and serve immediately.
 
+[TITLE]: Quick Garlic Pasta
+[INGREDIENTS]:
+- 8 oz spaghetti
+- 3 cloves garlic, minced
+- 1/4 cup olive oil
+- 1/2 tsp red pepper flakes
+- 1/4 cup grated parmesan cheese
+[DIRECTIONS]:
+1. Boil the pasta in salted water until al dente.
+2. While pasta cooks, heat olive oil in a pan over medium heat.
+3. Add garlic and red pepper flakes; sauté for 1 minute.
+4. Reserve 1/2 cup of pasta water, then drain the pasta.
+5. Toss the pasta in the garlic oil, adding pasta water as needed.
+6. Top with parmesan cheese and serve.
+
+[TITLE]: Classic Peanut Butter Toast
+[INGREDIENTS]:
+- 2 slices whole wheat bread
+- 2 tbsp peanut butter
+- 1 banana, sliced
+- 1 tsp honey
+[DIRECTIONS]:
+1. Toast the bread slices until golden brown.
+2. Spread a thick layer of peanut butter on each slice.
+3. Arrange the banana slices on top of the peanut butter.
+4. Drizzle with honey and enjoy.
+
+[TITLE]: Basic Garden Salad
+[INGREDIENTS]:
+- 4 cups mixed greens
+- 1 cucumber, sliced
+- 1/2 red onion, thinly sliced
+- 2 tbsp balsamic vinaigrette
+[DIRECTIONS]:
+1. Wash and dry the mixed greens.
+2. In a large bowl, combine the greens, cucumber, and onion.
+3. Drizzle with balsamic vinaigrette and toss gently to coat.
