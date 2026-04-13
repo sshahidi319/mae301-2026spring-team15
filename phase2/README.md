@@ -6,7 +6,7 @@
 No external Python packages are required for the current prototype.
 
 ## How to Run
-From the repository root, run:
+From the repository root, Mac run:
 
 ```bash
 cd phase2
