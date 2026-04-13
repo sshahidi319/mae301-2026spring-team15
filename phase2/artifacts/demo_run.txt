@@ -1,0 +1,58 @@
+ShelfAware Phase 2 Demo
+--------------------------------------------------
+Press Enter to use the built-in demo example.
+Enter pantry ingredients separated by commas
+(example: chicken, eggs, spinach, rice, olive oil):
+> chicken, eggs, spinach, rice, olive oil
+
+Enter max calories per serving [default 600]:
+> 600
+
+Enter minimum protein in grams [default 40]:
+> 40
+
+Normalized pantry:
+chicken, eggs, olive oil, rice, spinach
+
+Top recipe suggestions
+==================================================
+
+1. Chicken Spinach Rice Bowl
+   Calories: 540 kcal
+   Protein:  58 g
+   Carbs:    42 g
+   Fat:      14 g
+   Pantry match: 4/5
+   Meets calorie target: True
+   Meets protein target: True
+   Missing ingredients: garlic
+
+2. Garlic Chicken Skillet
+   Calories: 430 kcal
+   Protein:  52 g
+   Carbs:    10 g
+   Fat:      18 g
+   Pantry match: 3/5
+   Meets calorie target: True
+   Meets protein target: True
+   Missing ingredients: garlic, onion
+
+3. Chicken Rice Stir Fry
+   Calories: 560 kcal
+   Protein:  50 g
+   Carbs:    48 g
+   Fat:      15 g
+   Pantry match: 2/5
+   Meets calorie target: True
+   Meets protein target: True
+   Missing ingredients: garlic, onion, soy sauce
+
+4. High Protein Egg Fried Rice
+   Calories: 510 kcal
+   Protein:  30 g
+   Carbs:    46 g
+   Fat:      20 g
+   Pantry match: 4/5
+   Meets calorie target: True
+   Meets protein target: False
+   Missing ingredients: soy sauce
