@@ -8,7 +8,7 @@ This MVP demonstrates the core feature: a user provides pantry ingredients and n
 
 ## Problem and Use Case
 
-Many users struggle to decide what to cook based on the ingredients available in their kitchen. This becomes even more difficult when they are trying to meet calorie, protein, or sodium goals.
+Many users struggle to decide what to cook based on the ingredients available in their kitchen. This becomes even more difficult when they are trying to meet calorie or protein goals.
 
 ShelfAware addresses this problem by helping users:
 - identify recipes that match their available pantry items
@@ -24,16 +24,17 @@ This Phase 3 MVP includes:
 - a saved body-goals profile in `user_profile.json`
 - a daily meal tracker in `daily_meal_log.json`
 - a recipe search space of about 20,000 recipes from `recipes_dataset.json`
-- nutrition-aware ranking using calorie, protein, and sodium preferences
+- nutrition-aware ranking using calorie and protein preferences
+- optional extra macro filtering for `fat` or `sodium`
 - recipe detail views with ingredients and directions
-- pantry insights showing the most common missing ingredients
+- meal tracking toward a daily protein goal
 
 ## Repository Contents
 
 The `mvp/` folder contains the following files:
 
 - `shelfaware_mvp.py` - main application entry point for the ShelfAware MVP
-- `recommendation_engine.py` - core recommendation, ranking, and ingredient-matching logic
+- `recommendation_engine.py` - core recommendation, ranking, ingredient matching, and tracking logic
 - `recipes_dataset.json` - local recipe dataset used by the MVP
 - `user_pantry.json` - saved pantry data between runs
 - `user_profile.json` - saved user body-goal settings
