@@ -16,6 +16,41 @@ ShelfAware is a pantry-aware meal recommender. The Phase 3 MVP turns the earlier
 - Python 3.x
 - No external Python packages are required
 
+## Dataset Access
+
+ShelfAware uses a local recipe dataset file called `recipes_dataset.json`.
+
+To run the MVP, make sure this file is inside the `mvp/` folder:
+
+```bash
+mvp/recipes_dataset.json
+```
+
+If the dataset does not appear in GitHub because it is large, place `recipes_dataset.json` into the `mvp/` folder manually before running the app.
+
+Once the dataset file is in the folder, start ShelfAware with:
+
+```bash
+cd mvp
+python3 shelfaware_mvp.py
+```
+
+Without `recipes_dataset.json`, the app can open but it will not be able to generate recipe recommendations.
+
+## Dataset Source
+
+The recipe data used in ShelfAware comes from the Kaggle Epicurious recipes dataset:
+
+[Epicurious Recipes with Rating and Nutrition](https://www.kaggle.com/datasets/hugodarwood/epirecipes?select=full_format_recipes.json)
+
+For this MVP, the only dataset file you need is:
+
+- `full_format_recipes.json`
+
+If `recipes_dataset.json` is missing from the repo, download `full_format_recipes.json` from the Kaggle link above and place it in the `mvp/` folder as:
+
+- `recipes_dataset.json`
+
 ## How to Run
 
 From the repository root:
@@ -72,6 +107,6 @@ Recommended grading flow:
 ## Project Structure
 
 - `shelfaware_mvp.py`: main Phase 3 app entrypoint
-- `shelfaware_cli.py`: compatibility wrapper to the same app
 - `recommendation_engine.py`: recipe loading, pantry normalization, ranking, and insight logic
 - `report.md`: Phase 3 MVP report
+
