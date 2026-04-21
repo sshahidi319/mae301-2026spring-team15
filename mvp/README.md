@@ -109,4 +109,3 @@ Recommended grading flow:
 - `shelfaware_mvp.py`: main Phase 3 app entrypoint
 - `recommendation_engine.py`: recipe loading, pantry normalization, ranking, and insight logic
 - `report.md`: Phase 3 MVP report
-
