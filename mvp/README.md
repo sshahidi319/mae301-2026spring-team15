@@ -49,6 +49,14 @@ Shelfaware was built using the public Hugging Face dataset:
 
 **License on the dataset card:** CC BY-NC 4.0
 
+## Dataset Link
+Download from the Hugging Face dataset page:
+`datahiveai/recipes-with-nutrition`
+
+If you are downloading manually from the website, place the downloaded CSV in the `/mvp/` folder and run the preprocssing script to convert the raw data
+```bash
+python3 make_trimmed_dataset.py 
+
 ## How to Run
 
 From the repository root:
