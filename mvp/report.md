@@ -1,9 +1,3 @@
-# ShelfAware MVP Report
-
-
-
-
-
 
 # ShelfAware MVP Report
 
@@ -13,7 +7,22 @@ ShelfAware is a pantry-aware meal recommendation tool for students and busy home
 Compared with the Phase 2 prototype, this MVP is much closer to a usable product. It now includes a persistent pantry, a larger recipe database, cleaner recommendation output, recipe detail views, a saved body-goals profile, and a daily meal tracker.
 
 ## User and Use Case
-The main user is a student or young adult who has groceries at home but does not know what meals fit both the current pantry and nutrition goals. A realistic use case is a user opening ShelfAware after class, checking the pantry, asking for high-protein meal ideas under a calorie target, picking one recipe, and logging that meal toward a daily protein goal.
+The main target user is a college student or young adult with groceries at home who does not know what to 
+cook and wants a meal that matches nutrition goals. A second target user is a busy home cook who wants to 
+reduce waste by using ingredients already in the pantry before buying more food.
+
+A realistic user scenario is:
+1. a user opens ShelfAware after class or work,
+2. checks or updates the pantry,
+3. enters a meal calorie limit and minimum protein target,
+4. gets recipe suggestions that use pantry ingredients,
+5. opens a recipe to view ingredient details and missing items,
+6. logs the chosen meal into the tracker,
+7. updates pantry amounts based on what was used.
+8. 
+This use case fits the original product idea well because the user problem is not just “find any recipe.”
+The real pain point is finding a recipe that is practical **right now**, given pantry inventory and
+nutrition goals at the same time.
 
 ## System Design
 The MVP is implemented as a local Python command-line application inside `/mvp/`. The app layer handles user interaction, while the engine handles dataset loading, pantry parsing, normalization, ranking, tracking, and pantry updates. The backend currently loads recipe data from `full_format_recipes.json` and user state from `pantry.json`, `profile.json`, and `tracker_history.json`. 
@@ -169,3 +178,5 @@ With 2 to 3 more months, the highest-value upgrades would be:
 ## Summary of Phase 3 Progress
 Phase 3 moved ShelfAware from a narrow prototype to a more complete MVP attempt. The project now has a persistent pantry, a large local recipe dataset, nutrition-aware recommendation logic, cleaner recipe browsing, a body-goals profile, and a daily protein tracker. This makes the final MVP much closer to the original product idea and gives the project a stronger base for future development.
 
+## Demo Video
+insert link here for demo video
