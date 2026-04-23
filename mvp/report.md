@@ -55,7 +55,7 @@ Main files:
 - `user_pantry.json`: saved pantry items preprocessing script used to create `full_format_recipes.json`
 - `full_format_recipes.json`: processed recipe dataset used by the MVP
 - `pantry.json`: persistent pantry state
-- `persistent.json`: persistent nutrition goal profile
+- `profile.json`: persistent nutrition goal profile
 - `tracker_history.json`: saved meal history
 
 Current Reccomendation Flow:
