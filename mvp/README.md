@@ -130,5 +130,8 @@ python3 make_trimmed_dataset.py recipes-with-nutrition.cvs 3000
 - `tracker_history.json` stores tracked meals and servings.
 - Ingredient matching matching uses local normalization, parsing heuristics, and pantry comparison logic built into the engine
 - some recipe lines are messy in the source data, so pantry parsing is heuristic rather than perfect
+  
+## Demo Video Link
+insert demo video link here
 
 
