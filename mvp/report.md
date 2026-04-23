@@ -1,10 +1,20 @@
 
 # ShelfAware MVP Report
 
-## Executive Summary UPDATE
-ShelfAware is a pantry-aware meal recommendation tool for students and busy home cooks. The Phase 3 MVP helps a user enter the ingredients they already have, set nutrition preferences, receive recipe suggestions from a large recipe dataset, and track meals against a daily protein goal.
+## Executive Summary 
+ShelfAware is a pantry-aware meal recommendation MVP for students and busy home cooks. The system helps users 
+store pantry items, generate recipe suggestions from a processed recipe dataset, set personalized nutrition 
+goals, log meals, and update pantry inventory after cooking. 
 
-Compared with the Phase 2 prototype, this MVP is much closer to a usable product. It now includes a persistent pantry, a larger recipe database, cleaner recommendation output, recipe detail views, a saved body-goals profile, and a daily meal tracker.
+The current MVP runs locally as a Python command-line app through `shelfaware_mvp.py`, with recommendation
+, pantry, and tracker logic handled by the backend engine. Compared with the earlier prototype, it now includes
+persistent pantry storage, saved nutrition goals, meal tracking, a larger processed recipe dataset, and a 
+reproducible quick demo mode. 
+
+This MVP is not yet a fully trained end-to-end machine learning system. Instead, it is a practical 
+recommendation workflow built around ingredient normalization, pantry parsing, nutrition-aware filtering, and 
+recipe ranking over real data. That was the most realistic way to build a working, reproducible product within 
+the course timeline.
 
 ## User and Use Case
 The main target user is a college student or young adult with groceries at home who does not know what to 
@@ -47,7 +57,7 @@ flowchart LR
 
 ```
 
-Main files:
+### Main files:
 
 - `shelfaware_mvp.py`: main CLI app entrypoint and menu flow
 - `engine.py`: recipe loading, pantry parsing, recommendation logic, tracker logic, and shopping list generation
@@ -58,7 +68,8 @@ Main files:
 - `profile.json`: persistent nutrition goal profile
 - `tracker_history.json`: saved meal history
 
-Current Reccomendation Flow:
+### Current Reccomendation Flow:
+
 The current recommendation logic combines:
 
 - pantry overlap between user pantry items and recipe ingredients,
@@ -75,60 +86,144 @@ The system also supports:
 - pantry subtraction after cooking,
 - daily and monthly meal tracking.
 
-## Data UPDATE AND FINISH
+## Data 
+The MVP uses a processed recipe dataset stored locally as `full_format_recipes.json`. The app does not directly
+use the raw CSV during normal execution; instead, the raw source dataset is preprocessed into the JSON schema 
+expected by the engine. The current recipe records include fields such as title, URL, ingredient lines, 
+categories, calories, protein, carbs, fat, sodium, and rating. That matches what the engine currently loads 
+and uses.
 
+### Data Source
 
+The raw source data used for this project came from the public Hugging Face dataset `datahiveai/recipes-with-nutrition`, which is in CSV format.
 
+### Processed dataset used by the MVP
+
+For local reproducibility and faster runtime, the raw source data was converted into a processed JSON file used by the app: 
+`full_format_recipes.json`
+
+Typical fields used by the MVP are 
+- title
+- url
+- ingredients
+- categories
+- calories
+- protein
+- carbs
+- fat
+- sodium
+
+### Preprocessing
+
+The preprocessing step converts the raw recipe dataset into the format expected by the app. In practice, this includes:
+
+- keeping fields needed by the MVP,
+- converting ingredient lines into a consistent list format,
+- keeping nutrition values,
+- storing recipe URLs,
+- simplifying metadata for easier local loading.
+
+After that, the engine performs additional ingredient normalization during runtime. For example, it maps 
+related ingredient names to pantry-friendly forms such as:
+
+`chicken breast` → `chicken`
+
+`red bell pepper` → `bell pepper`
+
+`kosher salt` → `salt`
+
+This step was important because raw ingredient strings are messy, inconsistent, and often too specific for 
+direct pantry matching.
 
 ## Models and Methods
-ShelfAware is a recommendation workflow rather than a trained machine learning model. The MVP uses:
-
+ShelfAware is best described as a data-driven recommendation system rather than a trained ML model. The current MVP does not fine-tune or train a neural network. Instead, it uses a structured workflow with:
 - ingredient normalization,
-- heuristic ingredient matching,
-- nutrition-aware scoring,
-- result ranking,
-- meal logging against a protein goal.
+- pantry parsing,
+- pantry overlap scoring,
+- nutrition-aware filtering,
+- serving suggestion logic,
+- ranked output generation.
 
-This was a practical choice for the course MVP. It keeps the project easy to run locally, easy to explain during demo, and reproducible without external dependencies.
+That was the most realistic technical approach for the course timeline because it produced a working MVP that is easy to run locally and easy to explain during demo.
 
-For each recipe, the system:
+### What the current system does
 
-1. normalizes recipe ingredients,
-2. compares them against the pantry,
-3. computes pantry coverage,
-4. rewards recipes that meet calorie and protein preferences,
-5. optionally filters on an additional watched macro such as sodium or fat,
-6. ranks results by fit score and pantry usefulness.
+For each recipe, the engine:
 
-For body goals, the app stores weight, height, and goal type, then estimates a daily protein target. Users can log either a recommended recipe or a manually entered meal into the daily tracker.
+- loads ingredient lines from the processed JSON dataset,
+- normalizes ingredient names into pantry-friendly forms,
+- compares normalized recipe ingredients against the saved pantry,
+- calculates pantry overlap and missing ingredients,
+- checks nutrition constraints such as calories and protein,
+- optionally filters on sodium or fat,
+- ranks the remaining recipes by overall fit.
+
+The app also estimates daily nutrition targets from:
+
+- weight,
+- height,
+- goal type (cut, maintain, or muscle building),
+
+and stores those targets in the saved profile. The tracker then compares logged meals against daily calorie and protein goals.
+
+### AI Value in this MVP
+The AI-enabled part of the MVP is not a large trained model. Instead, it comes from combining:
+- real recipe data,
+- personalized nutrition constraints,
+- pantry-aware filtering,
+- ingredient normalization and matching,
+- useful recommendation ranking.
 
 ## Evaluation
-Evaluation for this MVP is mainly qualitative and product-focused.
+Evaluation for this MVP is mainly qualitative and product-focused, because the current system is a 
+recommendation workflow rather than a benchmarked predictive model.
 
-### What the MVP does successfully
+### What Works Well
 
-- stores pantry items across runs,
-- searches a recipe space far larger than the Phase 2 hard-coded set,
-- supports calorie and protein filtering,
-- supports an optional extra macro watch for fat or sodium,
-- hides recipes that are missing core calorie or protein data,
-- shows a cleaner ranked list before opening full recipe details,
-- stores body-goal information and estimates a daily protein target,
-- lets users track meals against that target.
+The MVP currently demonstrates these successful behaviors:
 
-### Example usage scenario
+- persistent pantry storage across runs
+- recipe generation from a much larger dataset than the early prototype
+- calorie and protein filtering
+- optional fat or sodium filtering
+- saved nutrition goals
+- daily and monthly meal tracking
+- pantry updates after cooking
+- shopping list generation for missing ingredients
+- quick demo mode for reproducibility
 
-If a user stores a pantry such as:
+### Example product evaluation scenario
 
-`chicken, rice, spinach, onion, garlic, olive oil, eggs`
+A useful qualitative test case is:
 
-and requests recommendations with:
+- pantry contains items like chicken, onion, bell pepper, eggs, milk, rice, olive oil, and common spices
+- user asks for meals under a calorie limit with a minimum protein target
+- the app returns ranked recipes using current pantry ingredients
+- the user opens one recipe and sees:
+-- ingredient list
+-- missing ingredients
+-- shopping list
+-- scaled servings
+-- calorie and protein fit
+-the user logs the recipe and updates pantry amounts
 
-- max calories: `650`
-- minimum protein: `30`
-- optional extra macro watch: `fat` or `sodium`
+### Error Analysis
+The biggest current failure mode is ingredient parsing. Real recipe text includes:
 
-the app returns ranked meals that use existing pantry items and better fit the user’s nutrition goals. If the user opens a recipe, the app shows ingredients, directions, missing items, and an option to log the meal into the daily tracker.
+- branded ingredient names,
+- vague ingredient lines,
+- package-size syntax,
+- mixed units,
+- optional or serving-only ingredients.
+
+To reduce errors, the parser was improved iteratively with:
+
+- more ingredient aliases,
+- better unit normalization,
+- better handling of package sizes and common recipe formatting,
+- safer skipping of vague lines like “salt and pepper to taste.”
+
+Even after those improvements, pantry subtraction is still heuristic and not perfect.
 
 ### Reproducibility
 
@@ -149,26 +244,57 @@ python3 shelfaware_mvp.py --demo
 No external Python packages are required.
 
 ## Limitations and Risks
+The current MVP still has several important limitations
+### 1. Ingredient parsing is heuristic
 
-1. Ingredient matching is still heuristic, so some recipe matches may be imperfect.
-2. The dataset is large, but some ingredient names remain messy after normalization.
-3. Protein-target estimation is simple and meant for MVP guidance, not medical advice.
-4. The food tracker logs meal totals but does not yet support editing old entries, portion scaling, or micronutrient tracking.
-5. The interface is still command-line based, which limits usability compared with a web or mobile interface.
-6. Receipt OCR and automatic pantry updates are still future work.
+Real-world recipe text is messy. Even after many parsing fixes, some lines are still skipped or approximated.
+
+### 2. Pantry subtraction is approximate
+
+Some ingredients require count-to-weight or count-to-volume conversions, which are inherently approximate.
+
+### 3. Nutrition targets are simplified
+
+Protein and calorie targets are rough guidance values for an MVP and are not medical or dietetic advice.
+
+### 4. No trained recommendation model
+
+The current system does not learn from user behavior yet. Recommendations are based on logic and ranking 
+rules, not trained personalization.
+
+### 5. CLI interface only
+
+The MVP is currently a command-line app, which limits ease of use for non-technical users.
+
+### 6. Dataset quality issues
+
+The raw dataset is large and useful, but some ingredient strings are inconsistent, branded, vague, or 
+incomplete. That directly affects pantry matching quality.
+
+### 7. Privacy and product risks
+
+A future production version would need to handle user pantry data, nutrition preferences, and possibly receipt
+data more carefully. The current MVP is local and lightweight, so privacy risk is low, but this would matter 
+much more in a deployed version.
 
 ## Next Steps
-With 2 to 3 more months, the highest-value upgrades would be:
+With a couple more months, the most important long-term goal would be to move from a rules-based MVP to a more personalized assistant that learns user preferences over time. The next steps to do this would be:
 
-- a web interface using Streamlit or Flask,
-- receipt OCR for automatic pantry updates,
-- stronger ingredient ontology and substitution logic,
-- multi-day meal planning and grocery list export,
-- better tracker features such as meal editing and calorie-goal support,
-- real user testing with students to measure recommendation quality and usefulness.
-
-## Summary of Phase 3 Progress
-Phase 3 moved ShelfAware from a narrow prototype to a more complete MVP attempt. The project now has a persistent pantry, a large local recipe dataset, nutrition-aware recommendation logic, cleaner recipe browsing, a body-goals profile, and a daily protein tracker. This makes the final MVP much closer to the original product idea and gives the project a stronger base for future development.
+### Technical next steps
+- move from CLI to a web interface such as Streamlit or Flask
+- improve the pantry parser using dataset-wide overrides or structured ingredient parsing
+- add stronger substitution logic and ingredient ontology support
+- support editing or deleting old tracker entries
+- add meal-planning across multiple days
+- improve shopping list grouping and export
+- experiment with learned ranking or personalization
+  
+### Product next steps
+- add receipt OCR for pantry updates
+- support multi-user households
+- allow users to save favorite meals
+- add “low stock” pantry reminders
+- run real user testing with students to measure usefulness and identify friction points
 
 ## Demo Video
 insert link here for demo video
