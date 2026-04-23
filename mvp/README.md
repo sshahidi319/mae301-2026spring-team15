@@ -39,17 +39,15 @@ Without `recipes_dataset.json`, the app can open but it will not be able to gene
 
 ## Dataset Source
 
-The recipe data used in ShelfAware comes from the Kaggle Epicurious recipes dataset:
+Shelfaware was built using the public Hugging Face dataset:
 
-[Epicurious Recipes with Rating and Nutrition](https://www.kaggle.com/datasets/hugodarwood/epirecipes?select=full_format_recipes.json)
+**Dataset name:** `datahiveai/recipes-with-nutrition`
 
-For this MVP, the only dataset file you need is:
+**Formats available:** CSV and JSON
 
-- `full_format_recipes.json`
+**Approximate size:** 39,447 recipes in the full dataset
 
-If `recipes_dataset.json` is missing from the repo, download `full_format_recipes.json` from the Kaggle link above and place it in the `mvp/` folder as:
-
-- `recipes_dataset.json`
+**License on the dataset card:** CC BY-NC 4.0
 
 ## How to Run
 
