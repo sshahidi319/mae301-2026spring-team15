@@ -57,13 +57,6 @@ If you are downloading manually from the website, place the downloaded CSV in th
 ```bash
 python3 make_trimmed_dataset.py 
 
-## How to Run
-
-From the repository root:
-
-```bash
-cd mvp
-python3 shelfaware_mvp.py
 ```
 
 This opens the interactive ShelfAware menu.
