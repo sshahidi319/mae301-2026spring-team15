@@ -2,10 +2,10 @@
 
 ShelfAware is a pantry-aware meal recommender. The Phase 3 MVP turns the earlier prototype into a reproducible command-line app with:
 
-- a persistent pantry saved in `user_pantry.json`,
-- a saved body-goals profile in `user_profile.json`,
-- a daily meal tracker in `daily_meal_log.json`,
-- a recipe search space of about 20,000 recipes from `recipes_dataset.json`,
+- a persistent pantry saved in `pantry.json`,
+- a saved body-goals profile in `profile.json`,
+- a meal and nutrition goal tracker in `tracker_history.json`
+- a recipe search space of about 20,000 recipes from `full_format_recipes.json`,
 - nutrition-aware ranking using calorie and protein preferences,
 - optional extra macro filtering for fat or sodium,
 - recipe detail views with ingredients and directions,
@@ -98,10 +98,10 @@ Recommended grading flow:
 
 ## Data Notes
 
-- `recipes_dataset.json` is the local recipe dataset used by the MVP.
-- `user_pantry.json` stores the current pantry between runs.
-- `user_profile.json` stores the user's saved body-goal settings.
-- `daily_meal_log.json` stores meals tracked for the current day.
+- `full_format_recipes.json` is the recipe dataset used by the MVP.
+- `pantry.json` stores the current pantry between runs.
+- `profile.json` stores the user's saved body and nutrition information.
+- `tracker_history.json` stores all meals tracked.
 - Ingredient matching uses local normalization and fuzzy similarity logic built with the Python standard library.
 
 ## Project Structure
