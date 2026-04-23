@@ -1,7 +1,7 @@
 
 # ShelfAware MVP Report
 
-## Executive Summary
+## Executive Summary UPDATE
 ShelfAware is a pantry-aware meal recommendation tool for students and busy home cooks. The Phase 3 MVP helps a user enter the ingredients they already have, set nutrition preferences, receive recipe suggestions from a large recipe dataset, and track meals against a daily protein goal.
 
 Compared with the Phase 2 prototype, this MVP is much closer to a usable product. It now includes a persistent pantry, a larger recipe database, cleaner recommendation output, recipe detail views, a saved body-goals profile, and a daily meal tracker.
@@ -19,7 +19,7 @@ A realistic user scenario is:
 5. opens a recipe to view ingredient details and missing items,
 6. logs the chosen meal into the tracker,
 7. updates pantry amounts based on what was used.
-8. 
+
 This use case fits the original product idea well because the user problem is not just “find any recipe.”
 The real pain point is finding a recipe that is practical **right now**, given pantry inventory and
 nutrition goals at the same time.
@@ -49,44 +49,36 @@ flowchart LR
 
 Main files:
 
-- `shelfaware_mvp.py`: main MVP app and menu flow
-- `recommendation_engine.py`: recipe loading, pantry normalization, ranking, profile utilities, and tracker utilities
-- `recipes_dataset.json`: recipe dataset
-- `user_pantry.json`: saved pantry items
-- `user_profile.json`: saved body-goals profile
-- `daily_meal_log.json`: daily meal tracker
+- `shelfaware_mvp.py`: main CLI app entrypoint and menu flow
+- `engine.py`: recipe loading, pantry parsing, recommendation logic, tracker logic, and shopping list generation
+- `make_trimmed_dataset.py`: recipe dataset
+- `user_pantry.json`: saved pantry items preprocessing script used to create `full_format_recipes.json`
+- `full_format_recipes.json`: processed recipe dataset used by the MVP
+- `pantry.json`: persistent pantry state
+- `persistent.json`: persistent nutrition goal profile
+- `tracker_history.json`: saved meal history
 
-The recommendation flow combines:
+Current Reccomendation Flow:
+The current recommendation logic combines:
 
-1. pantry overlap between saved ingredients and recipe ingredients,
-2. calorie and protein preference alignment,
-3. optional extra macro filtering for fat or sodium,
-4. recipe rating as a lightweight quality signal.
+- pantry overlap between user pantry items and recipe ingredients,
+- calorie and protein filtering,
+- optional fat or sodium filtering,
+- serving-size suggestion logic,
+- pantry-based usefulness ranking.
 
-Recipes are only shown if calorie and protein data exist. Missing fat or sodium values are allowed so the app can still return useful options.
+The system also supports:
 
-## Data
-The main dataset is `mvp/recipes_dataset.json`, which contains about 20,130 recipe records. After preprocessing and filtering out unusable entries, the app loads about 20,049 recipes with valid titles and ingredients.
+- recipe detail views,
+- scaled ingredient display,
+- shopping list generation,
+- pantry subtraction after cooking,
+- daily and monthly meal tracking.
 
-Typical fields in the dataset include:
+## Data UPDATE AND FINISH
 
-- title
-- ingredients
-- directions
-- calories
-- protein
-- fat
-- sodium
-- rating
-- categories
 
-ShelfAware also maintains small local user-state files:
 
-- `user_pantry.json`
-- `user_profile.json`
-- `daily_meal_log.json`
-
-Ingredient preprocessing simplifies recipe text into pantry-friendly names. For example, `chicken breast` becomes `chicken`, and `brown rice` becomes `rice`. This improves matching between user input and recipe ingredients.
 
 ## Models and Methods
 ShelfAware is a recommendation workflow rather than a trained machine learning model. The MVP uses:
