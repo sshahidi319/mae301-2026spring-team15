@@ -31,6 +31,53 @@ Running the MVP app
 - Python 3.x
 - No external Python packages are required
 
+## Running the MVP
+**To reproduce locally:**
+1. install Python 3
+2. place the project files inside `/mvp/`
+3. make sure `full_format_recipes.json` exsist inside `/mvp/`
+4. choose mode and run
+   
+**Interactive mode:**
+
+```bash
+cd mvp
+python3 shelfaware_mvp.py 
+```
+This launches the interactive ShelfAwared command-line app
+
+**Quick demo mode:**
+```bash
+cd mvp
+python3 shelfaware_mvp.py --demo
+```
+This runs a short non-interactive demo using a sample pantry
+
+
+## Demo Flow
+
+**Recommended demo flow:**
+
+1. Run `python3 shelfaware_mvp.py`.
+2. Choose `1` and add pantry items such as
+   - 2 lb chicken
+   - 2 onions
+   - 1 gallong milk
+   - 2 cups rice
+   - 9 oz salt
+   - ect
+3. Choose `3` for peronalized nutirion goals
+4. Choose `1` to update `weight` and `height`
+5. Choose `2` to go back to main menu
+6. Choose `2` for **Recipe generator**
+7. Set a max calorie target as `suggested from personalized nutrition goals` or manually such as `650`.
+8. Set a minimum protein target such as `suggested from personalized nutrition goals` or manually such as `30`.
+9. Optionally add fat or sodium limit
+10. View the ranked recipes and open one for full details.
+11. Add the recipe to the tracker
+12. Update the pantry based on selected serving amounts
+13. Choose `5` to go back to main menu
+
 ## Dataset Access
 
 ShelfAware uses a local processed recipe dataset file called `full_format_recipes.json`.
@@ -75,48 +122,6 @@ python3 make_trimmed_dataset.py recipes-with-nutrition.cvs 3000
 
 ```
 
-## Running the MVP
-
-**Interactive mode:**
-
-```bash
-cd mvp
-python3 shelfaware_mvp.py 
-```
-This launches the interactive ShelfAwared command-line app
-
-**Quick demo mode:**
-```bash
-cd mvp
-python3 shelfaware_mvp.py --demo
-```
-This runs a short non-interactive demo using a sample pantry
-
-
-## Demo Flow
-
-**Recommended demo flow:**
-
-1. Run `python3 shelfaware_mvp.py`.
-2. Choose `1` and add pantry items such as
-   - 2 lb chicken
-   - 2 onions
-   - 1 gallong milk
-   - 2 cups rice
-   - 9 oz salt
-   - ect
-3. Choose `3` for peronalized nutirion goals
-4. Choose `1` to update `weight` and `height`
-5. Choose `2` to go back to main menu
-6. Choose `2` for **Recipe generator**
-7. Set a max calorie target as `suggested from personalized nutrition goals` or manually such as `650`.
-8. Set a minimum protein target such as `suggested from personalized nutrition goals` or manually such as `30`.
-9. Optionally add fat or sodium limit
-10. View the ranked recipes and open one for full details.
-11. Add the recipe to the tracker
-12. Update the pantry based on selected serving amounts
-13. Choose `5` to go back to main menu
-
 ## Data Notes
 
 - `full_format_recipes.json` is the processed recipe dataset used directly by the MVP.
@@ -126,13 +131,4 @@ This runs a short non-interactive demo using a sample pantry
 - Ingredient matching matching uses local normalization, parsing heuristics, and pantry comparison logic built into the engine
 - some recipe lines are messy in the source data, so pantry parsing is heuristic rather than perfect
 
-## Reproducibility Notes
-**To reproduce locally:**
-1. install Python 3
-2. place the project files inside `/mvp/`
-3. make sure `full_format_recipes.json` exsist inside `/mvp/`
-4. run
-```bash
-cd mvp
-python3 shelfaware_mvp.py 
-```
+
