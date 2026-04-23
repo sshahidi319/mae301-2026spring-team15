@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 from datetime import date
 
-from recommendation_engine import (
+from engine import (
     add_tracker_entry,
     day_totals,
     estimate_calorie_target,
