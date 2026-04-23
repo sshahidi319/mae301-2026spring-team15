@@ -7,9 +7,9 @@ ShelfAware is a pantry-aware meal recommender. The Phase 3 MVP turns the earlier
 - a meal and nutrition goal tracker in `tracker_history.json`
 - a recipe search space of about 20,000 recipes from `full_format_recipes.json`,
 - nutrition-aware ranking using calorie and protein preferences,
-- optional extra macro filtering for fat or sodium,
-- recipe detail views with ingredients and directions,
-- meal tracking toward a daily protein goal.
+- optional extra macro filtering for fat or sodium content preferences,
+- recipe detail views with ingredients and link to directions,
+- meal tracking toward a daily protein and calorie goal.
 
 ## Requirements
 
@@ -18,7 +18,7 @@ ShelfAware is a pantry-aware meal recommender. The Phase 3 MVP turns the earlier
 
 ## Dataset Access
 
-ShelfAware uses a local recipe dataset file called `recipes_dataset.json`.
+ShelfAware uses a local recipe dataset file called `full_format_recipes.json`.
 
 To run the MVP, make sure this file is inside the `mvp/` folder:
 
