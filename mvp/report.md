@@ -1,5 +1,12 @@
 # ShelfAware MVP Report
 
+
+
+
+
+
+# ShelfAware MVP Report
+
 ## Executive Summary
 ShelfAware is a pantry-aware meal recommendation tool for students and busy home cooks. The Phase 3 MVP helps a user enter the ingredients they already have, set nutrition preferences, receive recipe suggestions from a large recipe dataset, and track meals against a daily protein goal.
 
@@ -9,19 +16,26 @@ Compared with the Phase 2 prototype, this MVP is much closer to a usable product
 The main user is a student or young adult who has groceries at home but does not know what meals fit both the current pantry and nutrition goals. A realistic use case is a user opening ShelfAware after class, checking the pantry, asking for high-protein meal ideas under a calorie target, picking one recipe, and logging that meal toward a daily protein goal.
 
 ## System Design
-The MVP is implemented as a local Python command-line application inside `/mvp/`.
+The MVP is implemented as a local Python command-line application inside `/mvp/`. The app layer handles user interaction, while the engine handles dataset loading, pantry parsing, normalization, ranking, tracking, and pantry updates. The backend currently loads recipe data from `full_format_recipes.json` and user state from `pantry.json`, `profile.json`, and `tracker_history.json`. 
 
 ```mermaid
 flowchart LR
-    A["User pantry input"] --> B["Pantry normalizer"]
-    B --> C["Saved user_pantry.json"]
-    D["Profile setup"] --> E["Saved user_profile.json"]
-    C --> F["Recommendation engine"]
-    E --> F
-    G["recipes_dataset.json"] --> F
-    F --> H["Ranked recipe list"]
-    H --> I["Recipe detail view"]
-    I --> J["daily_meal_log.json food tracker"]
+    A["User pantry input"] --> B["Pantry parser and normalizer"]
+    B --> C["pantry.json"]
+
+    D["Personalized nutrition goals"] --> E["profile.json"]
+
+    F["full_format_recipes.json"] --> G["Recipe loading and ingredient normalization"]
+    C --> H["Recommendation engine"]
+    E --> H
+    G --> H
+
+    H --> I["Ranked recipe list"]
+    I --> J["Recipe detail view"]
+    J --> K["Shopping list + pantry update"]
+    J --> L["Meal tracker entry"]
+    L --> M["tracker_history.json"]
+
 ```
 
 Main files:
