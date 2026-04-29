@@ -297,4 +297,5 @@ With a couple more months, the most important long-term goal would be to move fr
 - run real user testing with students to measure usefulness and identify friction points
 
 ## Demo Video
-insert link here for demo video
+[Demo Video (Zoom)](https://asu.zoom.us/rec/share/trKogU_dmoKja2YDa5EGp-OtDeRP4Ls9s6a4QcUZDIcBp5shAIPQnCzzJ9GhPeds.V14Ya3tIfWGU229L)  
+Passcode: `E0=6$O&J`
