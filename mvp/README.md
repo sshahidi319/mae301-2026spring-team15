@@ -132,6 +132,7 @@ python3 make_trimmed_dataset.py recipes-with-nutrition.cvs 3000
 - some recipe lines are messy in the source data, so pantry parsing is heuristic rather than perfect
   
 ## Demo Video Link
-insert demo video link here
+[Demo Video (Zoom)](https://asu.zoom.us/rec/share/trKogU_dmoKja2YDa5EGp-OtDeRP4Ls9s6a4QcUZDIcBp5shAIPQnCzzJ9GhPeds.V14Ya3tIfWGU229L)  
+Passcode: `E0=6$O&J`
 
 
